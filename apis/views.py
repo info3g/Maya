@@ -12,10 +12,7 @@ from django.contrib.auth.models import User
 import instaloader
 from instaloader import Instaloader, Post
 
-L = instaloader.Instaloader()
-username = "wilson24.74"
-password = "puneet@6644"
-L.login(username, password) 
+
 
 
 
@@ -27,9 +24,15 @@ class ReactView(APIView):
 		if serializer.is_valid():
 			usernames = serializer.data['username'] #first parameter in api
 			print(usernames)
-			count = serializer.data['count'] 			
+			count = serializer.data['count']
+			email = serializer.data['email']
+			password = serializer.data['password']
 			print(count)
 			counts = int(count)
+			L = instaloader.Instaloader()
+			username = email
+			password = password
+			L.login(username, password) 
 			profile = instaloader.Profile.from_username(L.context, usernames)
 			for followee in profile.get_followers():
 				follower_list.append(followee.username)
