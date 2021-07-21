@@ -17,4 +17,8 @@ class ReactSerializers(serializers.ModelSerializer):
 
 class InstagramSerializer(serializers.Serializer):
     username = serializers.CharField()
-    count = serializers.CharField()
+    email  = serializers.CharField()
+    password  = serializers.CharField()
+    likecount  = serializers.CharField()
+    viewcount  = serializers.CharField()
+    followercount  = serializers.CharField()
